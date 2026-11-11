@@ -1,0 +1,571 @@
+{
+  "game": "fishing-season",
+  "version": "2.2",
+  "student_id": "decker",
+  "bay_seed": 2535115079,
+  "started_at": "2026-10-21T10:34:04.380Z",
+  "finished_at": "2026-10-21T10:39:37.386Z",
+  "sd": 2.5,
+  "spots": [
+    "Old Pier",
+    "Rocky Point",
+    "Seagrass Bed",
+    "Deep Channel",
+    "Lighthouse Reef"
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "key": "standard",
+      "days": 30,
+      "shift_day": null,
+      "total_kg": 260.6,
+      "strategy_note": "I tried all the fish spot and one had like the double amount of fish that all of the other at list so I chose to always go there.",
+      "note_written_at": "2026-10-21T10:37:15.892Z",
+      "choices": [
+        {
+          "day": 1,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 9,
+          "decision_ms": 59600
+        },
+        {
+          "day": 2,
+          "spot": 2,
+          "spot_name": "Seagrass Bed",
+          "catch_kg": 5.5,
+          "decision_ms": 3300
+        },
+        {
+          "day": 3,
+          "spot": 4,
+          "spot_name": "Lighthouse Reef",
+          "catch_kg": 1.8,
+          "decision_ms": 1800
+        },
+        {
+          "day": 4,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 2,
+          "decision_ms": 2200
+        },
+        {
+          "day": 5,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 0,
+          "decision_ms": 2000
+        },
+        {
+          "day": 6,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 9.9,
+          "decision_ms": 2500
+        },
+        {
+          "day": 7,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 9.2,
+          "decision_ms": 1600
+        },
+        {
+          "day": 8,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 8.9,
+          "decision_ms": 1200
+        },
+        {
+          "day": 9,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 10.8,
+          "decision_ms": 900
+        },
+        {
+          "day": 10,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 9.3,
+          "decision_ms": 800
+        },
+        {
+          "day": 11,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 6,
+          "decision_ms": 500
+        },
+        {
+          "day": 12,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 9.3,
+          "decision_ms": 1200
+        },
+        {
+          "day": 13,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 12.1,
+          "decision_ms": 800
+        },
+        {
+          "day": 14,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 4.8,
+          "decision_ms": 600
+        },
+        {
+          "day": 15,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 9.8,
+          "decision_ms": 600
+        },
+        {
+          "day": 16,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 10.6,
+          "decision_ms": 700
+        },
+        {
+          "day": 17,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 8.4,
+          "decision_ms": 600
+        },
+        {
+          "day": 18,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 8.3,
+          "decision_ms": 600
+        },
+        {
+          "day": 19,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 13.8,
+          "decision_ms": 600
+        },
+        {
+          "day": 20,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 13.6,
+          "decision_ms": 700
+        },
+        {
+          "day": 21,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 13.1,
+          "decision_ms": 500
+        },
+        {
+          "day": 22,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 10,
+          "decision_ms": 500
+        },
+        {
+          "day": 23,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 4.9,
+          "decision_ms": 1700
+        },
+        {
+          "day": 24,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 10.2,
+          "decision_ms": 3600
+        },
+        {
+          "day": 25,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 9.2,
+          "decision_ms": 800
+        },
+        {
+          "day": 26,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 6,
+          "decision_ms": 600
+        },
+        {
+          "day": 27,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 11.4,
+          "decision_ms": 500
+        },
+        {
+          "day": 28,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 12.3,
+          "decision_ms": 500
+        },
+        {
+          "day": 29,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 9.8,
+          "decision_ms": 700
+        },
+        {
+          "day": 30,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 10.6,
+          "decision_ms": 5400
+        }
+      ],
+      "true_means": [
+        10,
+        5.1,
+        6.3,
+        2.1,
+        4.5
+      ],
+      "true_means_after_shift": null
+    },
+    {
+      "round": 2,
+      "key": "short",
+      "days": 10,
+      "shift_day": null,
+      "total_kg": 71.5,
+      "strategy_note": "Same strategy than previously, I always fish the best spot after seeing all of the spots.",
+      "note_written_at": "2026-10-21T10:38:34.494Z",
+      "choices": [
+        {
+          "day": 1,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 10.1,
+          "decision_ms": 1700
+        },
+        {
+          "day": 2,
+          "spot": 2,
+          "spot_name": "Seagrass Bed",
+          "catch_kg": 1,
+          "decision_ms": 2500
+        },
+        {
+          "day": 3,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 3.6,
+          "decision_ms": 1500
+        },
+        {
+          "day": 4,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 0.2,
+          "decision_ms": 1500
+        },
+        {
+          "day": 5,
+          "spot": 4,
+          "spot_name": "Lighthouse Reef",
+          "catch_kg": 8.4,
+          "decision_ms": 1100
+        },
+        {
+          "day": 6,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 9.7,
+          "decision_ms": 1600
+        },
+        {
+          "day": 7,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 8.5,
+          "decision_ms": 1100
+        },
+        {
+          "day": 8,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 12.7,
+          "decision_ms": 700
+        },
+        {
+          "day": 9,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 7.2,
+          "decision_ms": 600
+        },
+        {
+          "day": 10,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 10.1,
+          "decision_ms": 2300
+        }
+      ],
+      "true_means": [
+        9.9,
+        3.9,
+        4.6,
+        5.8,
+        5.6
+      ],
+      "true_means_after_shift": null
+    },
+    {
+      "round": 3,
+      "key": "changing",
+      "days": 30,
+      "shift_day": 16,
+      "total_kg": 270.4,
+      "strategy_note": "As always I did the same strategy.",
+      "note_written_at": "2026-10-21T10:39:37.263Z",
+      "choices": [
+        {
+          "day": 1,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 2.2,
+          "decision_ms": 2500
+        },
+        {
+          "day": 2,
+          "spot": 2,
+          "spot_name": "Seagrass Bed",
+          "catch_kg": 5.2,
+          "decision_ms": 1300
+        },
+        {
+          "day": 3,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 1.5,
+          "decision_ms": 1300
+        },
+        {
+          "day": 4,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 10.4,
+          "decision_ms": 1400
+        },
+        {
+          "day": 5,
+          "spot": 4,
+          "spot_name": "Lighthouse Reef",
+          "catch_kg": 3,
+          "decision_ms": 1700
+        },
+        {
+          "day": 6,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 13.1,
+          "decision_ms": 1200
+        },
+        {
+          "day": 7,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 10.5,
+          "decision_ms": 600
+        },
+        {
+          "day": 8,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 11,
+          "decision_ms": 500
+        },
+        {
+          "day": 9,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 13,
+          "decision_ms": 500
+        },
+        {
+          "day": 10,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 9.9,
+          "decision_ms": 500
+        },
+        {
+          "day": 11,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 6.4,
+          "decision_ms": 400
+        },
+        {
+          "day": 12,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 10.7,
+          "decision_ms": 400
+        },
+        {
+          "day": 13,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 10.9,
+          "decision_ms": 400
+        },
+        {
+          "day": 14,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 9.7,
+          "decision_ms": 400
+        },
+        {
+          "day": 15,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 14.9,
+          "decision_ms": 400
+        },
+        {
+          "day": 16,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 8.4,
+          "decision_ms": 300
+        },
+        {
+          "day": 17,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 5.8,
+          "decision_ms": 400
+        },
+        {
+          "day": 18,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 9.6,
+          "decision_ms": 200
+        },
+        {
+          "day": 19,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 12.8,
+          "decision_ms": 300
+        },
+        {
+          "day": 20,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 8.4,
+          "decision_ms": 300
+        },
+        {
+          "day": 21,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 7.1,
+          "decision_ms": 300
+        },
+        {
+          "day": 22,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 7.6,
+          "decision_ms": 300
+        },
+        {
+          "day": 23,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 5.6,
+          "decision_ms": 300
+        },
+        {
+          "day": 24,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 8.3,
+          "decision_ms": 300
+        },
+        {
+          "day": 25,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 14.3,
+          "decision_ms": 400
+        },
+        {
+          "day": 26,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 7.4,
+          "decision_ms": 400
+        },
+        {
+          "day": 27,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 9.3,
+          "decision_ms": 400
+        },
+        {
+          "day": 28,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 9.1,
+          "decision_ms": 400
+        },
+        {
+          "day": 29,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 12.7,
+          "decision_ms": 400
+        },
+        {
+          "day": 30,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 11.6,
+          "decision_ms": 500
+        }
+      ],
+      "true_means": [
+        2.6,
+        6.1,
+        5.6,
+        9.5,
+        4.1
+      ],
+      "true_means_after_shift": [
+        7.5,
+        5.4,
+        5,
+        8.6,
+        3.8
+      ]
+    }
+  ]
+}

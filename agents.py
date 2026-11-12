@@ -210,5 +210,53 @@ class UCBAgent(Agent):
         self.action_counts[spot] += 1
         self.q_values[spot] += (catch - self.q_values[spot]) / self.action_counts[spot]
 
+class EpsilonGreedyAgent(Agent):
+    """
+    Sutton and Barto, Section 2.2: epsilon-greedy action selection.
+    Section 2.5: Tracking a Nonstationary Problem (using constant alpha).
+    
+    Parameters:
+    - epsilon (float): probability of choosing a random action (exploration).
+    - alpha (float or None): step-size parameter for the update. If None, 
+      uses the sample average (1/N).
+    
+    Memory:
+    - self.q_values (array): value estimation (catch) for each spot.
+    - self.counts (array): number of times each spot has been fished.
+    """
+    def __init__(self, n_spots=5, seed=None, epsilon=0.1, alpha=None):
+        super().__init__(n_spots, seed)
+        self.epsilon = epsilon
+        self.alpha = alpha
+        self.q_values = np.zeros(n_spots)
+        self.counts = np.zeros(n_spots)
+
+    def reset(self):
+        self.q_values = np.zeros(self.n_spots)
+        self.counts = np.zeros(self.n_spots)
+
+    def choose(self):
+        # Exploration with probability epsilon
+        if self.rng.random() < self.epsilon:
+            return int(self.rng.integers(self.n_spots))
+        # Exploitation (greedy choice) with probability 1 - epsilon
+        else:
+            # np.argmax returns the index of the max value (the best spot)
+            return int(np.argmax(self.q_values))
+
+    def update(self, spot, catch):
+        self.counts[spot] += 1
+        
+        # Section 2.4: Sample-average method
+        if self.alpha is None:
+            step_size = 1.0 / self.counts[spot]
+        # Section 2.5: Constant step-size (ideal for Season 3)
+        else:
+            step_size = self.alpha
+            
+        # Update formula: Q(a) <- Q(a) + step_size * [Reward - Q(a)]
+        self.q_values[spot] += step_size * (catch - self.q_values[spot])
+
+
 # Task 6 (optional): add your contextual agents below, as subclasses of
 # ContextualAgent.

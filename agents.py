@@ -176,7 +176,39 @@ class HumanRuleAgent(Agent):
 # Task 4: add below at least two agents implementing methods from the reading
 # (Sutton and Barto, Chapter 2), as subclasses of Agent. Document each class:
 # what it keeps in memory, how it chooses, what its parameters mean.
+class UCBAgent(Agent):
+    """Upper Confidence Bound (UCB) Bandit Algorithm.
+    
+    Parameters
+    ----------
+    c : float
+        Degree of exploration.
+    """
+    def __init__(self, n_spots=5, seed=None, c=2.0):
+        super().__init__(n_spots, seed)
+        self.c = c
+        self.q_values = np.zeros(n_spots)
+        self.action_counts = np.zeros(n_spots)
+        self.t = 0
 
+    def reset(self):
+        self.q_values = np.zeros(self.n_spots)
+        self.action_counts = np.zeros(self.n_spots)
+        self.t = 0
+
+    def choose(self):
+        # Force testing every spot at least once to avoid dividing by zero
+        if 0 in self.action_counts:
+            return int(np.argmin(self.action_counts))
+        
+        # UCB formula from the book
+        ucb_values = self.q_values + self.c * np.sqrt(np.log(self.t) / self.action_counts)
+        return int(np.argmax(ucb_values))
+
+    def update(self, spot, catch):
+        self.t += 1
+        self.action_counts[spot] += 1
+        self.q_values[spot] += (catch - self.q_values[spot]) / self.action_counts[spot]
 
 # Task 6 (optional): add your contextual agents below, as subclasses of
 # ContextualAgent.

@@ -1,0 +1,571 @@
+{
+  "game": "fishing-season",
+  "version": "2.2",
+  "student_id": "doyen",
+  "bay_seed": 2543202767,
+  "started_at": "2026-10-21T08:45:34.543Z",
+  "finished_at": "2026-10-21T08:52:12.675Z",
+  "sd": 2.5,
+  "spots": [
+    "Old Pier",
+    "Rocky Point",
+    "Seagrass Bed",
+    "Deep Channel",
+    "Lighthouse Reef"
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "key": "standard",
+      "days": 30,
+      "shift_day": null,
+      "total_kg": 195.1,
+      "strategy_note": "I make one turn, analyze the best spot, test one or two best spots. After that, I choose the best one and stay on it.",
+      "note_written_at": "2026-10-21T08:48:58.103Z",
+      "choices": [
+        {
+          "day": 1,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 2.9,
+          "decision_ms": 4700
+        },
+        {
+          "day": 2,
+          "spot": 2,
+          "spot_name": "Seagrass Bed",
+          "catch_kg": 0,
+          "decision_ms": 4500
+        },
+        {
+          "day": 3,
+          "spot": 4,
+          "spot_name": "Lighthouse Reef",
+          "catch_kg": 4.1,
+          "decision_ms": 5000
+        },
+        {
+          "day": 4,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 6.1,
+          "decision_ms": 5100
+        },
+        {
+          "day": 5,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 3.2,
+          "decision_ms": 5700
+        },
+        {
+          "day": 6,
+          "spot": 2,
+          "spot_name": "Seagrass Bed",
+          "catch_kg": 3.9,
+          "decision_ms": 6100
+        },
+        {
+          "day": 7,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 9.4,
+          "decision_ms": 14000
+        },
+        {
+          "day": 8,
+          "spot": 4,
+          "spot_name": "Lighthouse Reef",
+          "catch_kg": 6.3,
+          "decision_ms": 6300
+        },
+        {
+          "day": 9,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 5.8,
+          "decision_ms": 2500
+        },
+        {
+          "day": 10,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 6.9,
+          "decision_ms": 22700
+        },
+        {
+          "day": 11,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 8.8,
+          "decision_ms": 100
+        },
+        {
+          "day": 12,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 2.1,
+          "decision_ms": 100
+        },
+        {
+          "day": 13,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 4.5,
+          "decision_ms": 100
+        },
+        {
+          "day": 14,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 8.6,
+          "decision_ms": 200
+        },
+        {
+          "day": 15,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 9.1,
+          "decision_ms": 500
+        },
+        {
+          "day": 16,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 10.3,
+          "decision_ms": 0
+        },
+        {
+          "day": 17,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 6.2,
+          "decision_ms": 0
+        },
+        {
+          "day": 18,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 7.9,
+          "decision_ms": 200
+        },
+        {
+          "day": 19,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 6,
+          "decision_ms": 100
+        },
+        {
+          "day": 20,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 6.3,
+          "decision_ms": 200
+        },
+        {
+          "day": 21,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 6.6,
+          "decision_ms": 100
+        },
+        {
+          "day": 22,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 8.4,
+          "decision_ms": 100
+        },
+        {
+          "day": 23,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 7.3,
+          "decision_ms": 100
+        },
+        {
+          "day": 24,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 8.7,
+          "decision_ms": 600
+        },
+        {
+          "day": 25,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 8.8,
+          "decision_ms": 200
+        },
+        {
+          "day": 26,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 7.7,
+          "decision_ms": 200
+        },
+        {
+          "day": 27,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 6.6,
+          "decision_ms": 200
+        },
+        {
+          "day": 28,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 5.7,
+          "decision_ms": 200
+        },
+        {
+          "day": 29,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 8.5,
+          "decision_ms": 100
+        },
+        {
+          "day": 30,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 8.4,
+          "decision_ms": 0
+        }
+      ],
+      "true_means": [
+        2,
+        7.2,
+        2.4,
+        6.2,
+        4.9
+      ],
+      "true_means_after_shift": null
+    },
+    {
+      "round": 2,
+      "key": "short",
+      "days": 10,
+      "shift_day": null,
+      "total_kg": 66.6,
+      "strategy_note": "No strategy, just turn over the 5 spots",
+      "note_written_at": "2026-10-21T08:50:04.194Z",
+      "choices": [
+        {
+          "day": 1,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 7.5,
+          "decision_ms": 4000
+        },
+        {
+          "day": 2,
+          "spot": 2,
+          "spot_name": "Seagrass Bed",
+          "catch_kg": 11.1,
+          "decision_ms": 1100
+        },
+        {
+          "day": 3,
+          "spot": 4,
+          "spot_name": "Lighthouse Reef",
+          "catch_kg": 6.9,
+          "decision_ms": 1900
+        },
+        {
+          "day": 4,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 6.6,
+          "decision_ms": 800
+        },
+        {
+          "day": 5,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 8.7,
+          "decision_ms": 900
+        },
+        {
+          "day": 6,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 6.2,
+          "decision_ms": 800
+        },
+        {
+          "day": 7,
+          "spot": 2,
+          "spot_name": "Seagrass Bed",
+          "catch_kg": 5.2,
+          "decision_ms": 1700
+        },
+        {
+          "day": 8,
+          "spot": 4,
+          "spot_name": "Lighthouse Reef",
+          "catch_kg": 4.4,
+          "decision_ms": 2300
+        },
+        {
+          "day": 9,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 1.8,
+          "decision_ms": 700
+        },
+        {
+          "day": 10,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 8.2,
+          "decision_ms": 1600
+        }
+      ],
+      "true_means": [
+        4.1,
+        7.6,
+        8.2,
+        3.5,
+        5.3
+      ],
+      "true_means_after_shift": null
+    },
+    {
+      "round": 3,
+      "key": "changing",
+      "days": 30,
+      "shift_day": 16,
+      "total_kg": 164.8,
+      "strategy_note": "I make one turn, remark that 2 spot were good, retest these 2 spot, and choose the best one for the rest of season.",
+      "note_written_at": "2026-10-21T08:52:12.463Z",
+      "choices": [
+        {
+          "day": 1,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 7.9,
+          "decision_ms": 2300
+        },
+        {
+          "day": 2,
+          "spot": 2,
+          "spot_name": "Seagrass Bed",
+          "catch_kg": 3.6,
+          "decision_ms": 400
+        },
+        {
+          "day": 3,
+          "spot": 4,
+          "spot_name": "Lighthouse Reef",
+          "catch_kg": 2.2,
+          "decision_ms": 1400
+        },
+        {
+          "day": 4,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 9.1,
+          "decision_ms": 700
+        },
+        {
+          "day": 5,
+          "spot": 1,
+          "spot_name": "Rocky Point",
+          "catch_kg": 4,
+          "decision_ms": 1500
+        },
+        {
+          "day": 6,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 10,
+          "decision_ms": 1000
+        },
+        {
+          "day": 7,
+          "spot": 3,
+          "spot_name": "Deep Channel",
+          "catch_kg": 1.6,
+          "decision_ms": 800
+        },
+        {
+          "day": 8,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 5.4,
+          "decision_ms": 1400
+        },
+        {
+          "day": 9,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 6.3,
+          "decision_ms": 24600
+        },
+        {
+          "day": 10,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 10.6,
+          "decision_ms": 300
+        },
+        {
+          "day": 11,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 8.6,
+          "decision_ms": 600
+        },
+        {
+          "day": 12,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 9.7,
+          "decision_ms": 100
+        },
+        {
+          "day": 13,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 9.5,
+          "decision_ms": 200
+        },
+        {
+          "day": 14,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 8.9,
+          "decision_ms": 0
+        },
+        {
+          "day": 15,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 4.7,
+          "decision_ms": 0
+        },
+        {
+          "day": 16,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 6.6,
+          "decision_ms": 2000
+        },
+        {
+          "day": 17,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 6.1,
+          "decision_ms": 400
+        },
+        {
+          "day": 18,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 6.4,
+          "decision_ms": 400
+        },
+        {
+          "day": 19,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 1.2,
+          "decision_ms": 100
+        },
+        {
+          "day": 20,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 7.9,
+          "decision_ms": 200
+        },
+        {
+          "day": 21,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 0,
+          "decision_ms": 100
+        },
+        {
+          "day": 22,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 0,
+          "decision_ms": 0
+        },
+        {
+          "day": 23,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 0,
+          "decision_ms": 100
+        },
+        {
+          "day": 24,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 8.9,
+          "decision_ms": 600
+        },
+        {
+          "day": 25,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 2.4,
+          "decision_ms": 1000
+        },
+        {
+          "day": 26,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 2.2,
+          "decision_ms": 400
+        },
+        {
+          "day": 27,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 6,
+          "decision_ms": 200
+        },
+        {
+          "day": 28,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 7.7,
+          "decision_ms": 400
+        },
+        {
+          "day": 29,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 6,
+          "decision_ms": 100
+        },
+        {
+          "day": 30,
+          "spot": 0,
+          "spot_name": "Old Pier",
+          "catch_kg": 1.3,
+          "decision_ms": 100
+        }
+      ],
+      "true_means": [
+        8,
+        4.9,
+        4.6,
+        7.3,
+        3.3
+      ],
+      "true_means_after_shift": [
+        3.2,
+        5.3,
+        6.6,
+        9.3,
+        8.7
+      ]
+    }
+  ]
+}

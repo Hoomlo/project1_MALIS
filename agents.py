@@ -176,13 +176,20 @@ class HumanRuleAgent(Agent):
 # Task 4: add below at least two agents implementing methods from the reading
 # (Sutton and Barto, Chapter 2), as subclasses of Agent. Document each class:
 # what it keeps in memory, how it chooses, what its parameters mean.
+
 class UCBAgent(Agent):
-    """Upper Confidence Bound (UCB) Bandit Algorithm.
+    """Upper Confidence Bound (UCB) Bandit Algorithm (Section 2.7).
     
     Parameters
     ----------
+    n_spots : int
+        Number of fishing spots (5 in the game).
+    seed : int or None
+        Seed of the agent's own random generator, self.rng. Use self.rng for
+        any random decision, so that results can be reproduced.
     c : float
-        Degree of exploration.
+        Degree of exploration parameter. Controls the weight given to the 
+        uncertainty term.
     """
     def __init__(self, n_spots=5, seed=None, c=2.0):
         super().__init__(n_spots, seed)
@@ -212,17 +219,21 @@ class UCBAgent(Agent):
 
 class EpsilonGreedyAgent(Agent):
     """
-    Sutton and Barto, Section 2.2: epsilon-greedy action selection.
-    Section 2.5: Tracking a Nonstationary Problem (using constant alpha).
+    Epsilon-greedy action selection (Section 2.2).
+    Tracks non-stationary problems using a constant alpha (Section 2.5)
     
-    Parameters:
-    - epsilon (float): probability of choosing a random action (exploration).
-    - alpha (float or None): step-size parameter for the update. If None, 
-      uses the sample average (1/N).
-    
-    Memory:
-    - self.q_values (array): value estimation (catch) for each spot.
-    - self.counts (array): number of times each spot has been fished.
+    Parameters
+    ----------
+    n_spots : int
+        Number of fishing spots (5 in the game).
+    seed : int or None
+        Seed of the agent's own random generator, self.rng. Use self.rng for
+        any random decision, so that results can be reproduced.
+    epsilon : float
+        Probability of choosing a random action (exploration rate).
+    alpha : float or None
+        Step-size parameter for the update. If None, uses the sample average 
+        (1/N). If set to a float, allows the agent to track non-stationary problems.
     """
     def __init__(self, n_spots=5, seed=None, epsilon=0.1, alpha=None):
         super().__init__(n_spots, seed)
@@ -239,22 +250,21 @@ class EpsilonGreedyAgent(Agent):
         # Exploration with probability epsilon
         if self.rng.random() < self.epsilon:
             return int(self.rng.integers(self.n_spots))
-        # Exploitation (greedy choice) with probability 1 - epsilon
+        # Exploitation with probability 1 - epsilon
         else:
-            # np.argmax returns the index of the max value (the best spot)
+            # np.argmax returns the index of the max value which is the best spot
             return int(np.argmax(self.q_values))
 
     def update(self, spot, catch):
         self.counts[spot] += 1
         
-        # Section 2.4: Sample-average method
+        # Sample-average method
         if self.alpha is None:
             step_size = 1.0 / self.counts[spot]
-        # Section 2.5: Constant step-size (ideal for Season 3)
+        # Constant step-size (ideal for Season 3)
         else:
             step_size = self.alpha
-            
-        # Update formula: Q(a) <- Q(a) + step_size * [Reward - Q(a)]
+
         self.q_values[spot] += step_size * (catch - self.q_values[spot])
 
 
@@ -263,18 +273,26 @@ class EpsilonGreedyAgent(Agent):
 
 class KNNContextualAgent(ContextualAgent):
     """
-    Task 6: Contextual bandit using K-Nearest Neighbors (KNN).
+    Contextual bandit using K-NN.
     
-    Parameters:
-    - k (int): Number of neighbors to use for the prediction (e.g., 3).
-    - epsilon (float): Probability of exploring randomly. This is the "FIX" 
-      requested by the assignment to avoid getting stuck on bad initial predictions.
+    Parameters
+    ----------
+    n_spots : int
+        Number of fishing spots (5 in the game).
+    seed : int or None
+        Seed of the agent's own random generator, self.rng. Use self.rng for
+        any random decision, so that results can be reproduced.
+    k : int
+        Number of nearest neighbors to use for the catch prediction (e.g., 3).
+    epsilon : float
+        Probability of exploring randomly. This is to
+        avoid getting stuck on bad initial predictions due to unlucky variance.
     """
     def __init__(self, n_spots=5, seed=None, k=3, epsilon=0.1):
         super().__init__(n_spots, seed)
         self.k = k
         self.epsilon = epsilon
-        # Scale factors to normalize [wind (40), waves (3), tide (2)]
+        # Scale factors to normalize wind, waves and tide according to fishing.py
         self.scale = np.array([40.0, 3.0, 2.0])
         
     def reset(self):
@@ -283,38 +301,29 @@ class KNNContextualAgent(ContextualAgent):
         self.Y = {spot: [] for spot in range(self.n_spots)}
 
     def choose(self, x):
-        # 1. THE FIX: Epsilon-greedy exploration
-        # If we ONLY rely on pure prediction (epsilon = 0.0), we might 
-        # miss the best spot due to a bad first impression.
+        # Epsilon-greedy exploration
         if self.rng.random() < self.epsilon:
             return int(self.rng.integers(self.n_spots))
         
-        # 2. KNN PREDICTION
+        # K-NN prediction
         predictions = np.zeros(self.n_spots)
         x_scaled = x / self.scale
         
         for spot in range(self.n_spots):
             if len(self.X[spot]) == 0:
-                # Optimistic initialization to force discovery if there is no data
-                predictions[spot] = 100.0 
+                predictions[spot] = 0.0
             else:
                 X_spot = np.array(self.X[spot])
                 Y_spot = np.array(self.Y[spot])
                 
-                # Calculate the Euclidean distance between x_scaled and the history
+                # Applying the algorithm to get the average capture of these neighbors
                 distances = np.linalg.norm(X_spot - x_scaled, axis=1)
-                
-                # Take the k nearest neighbors (or fewer if we have little data)
                 k_actual = min(self.k, len(X_spot))
                 nearest_idx = np.argsort(distances)[:k_actual]
-                
-                # The prediction is the mean catch of these neighbors
                 predictions[spot] = np.mean(Y_spot[nearest_idx])
                 
-        # Choose the spot with the highest prediction
         return int(np.argmax(predictions))
 
     def update(self, x, spot, catch):
-        # Store the normalized conditions and the catch
         self.X[spot].append(x / self.scale)
         self.Y[spot].append(catch)

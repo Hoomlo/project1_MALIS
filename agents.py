@@ -143,16 +143,34 @@ class HumanRuleAgent(Agent):
 
     Describe the rule here, precisely enough that someone could apply it by hand.
     Add constructor parameters if your rule has any (call super().__init__ first).
-    """
 
+    Rule : Go to each spot, keep the better spot and then fish on this exact spot 
+    until the season ends
+    """
+    def __init__(self, n_spots=5, seed=None):
+        super().__init__(n_spots, seed)
+        self.day = 0
+        self.catches = np.zeros(n_spots)
+        self.best_spot = 0
+    
     def reset(self):
-        raise NotImplementedError("Task 4")
+        self.day = 0
+        self.catches = np.zeros(self.n_spots)
+        self.best_spot = 0
 
     def choose(self):
-        raise NotImplementedError("Task 4")
+        if self.day < self.n_spots :
+            return self.day
+        else :
+            return self.best_spot
 
     def update(self, spot, catch):
-        raise NotImplementedError("Task 4")
+        if self.day < self.n_spots : 
+            self.catches[spot] = catch
+            #If we reach the end of the unexeplored spot, we keep the best one
+            if self.day == self.n_spots - 1:
+                self.best_spot = int(np.argmax(self.catches))
+        self.day += 1
 
 
 # Task 4: add below at least two agents implementing methods from the reading

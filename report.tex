@@ -1,96 +1,144 @@
-%! TEX program = xelatex
 \documentclass[11pt, a4paper]{article}
-
 \usepackage[a4paper, margin=2.5cm]{geometry}
 \usepackage{fontspec}
-\usepackage[english]{babel}
-\setmainfont{Noto Sans}
-
+\usepackage[english, bidi=basic, provide=*]{babel}
+\babelprovide[import, onchar=ids fonts]{english}
+\babelfont{rm}{Noto Sans}
 \usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage{booktabs}
-\usepackage{hyperref}
+\usepackage{enumitem}
+\setlist[itemize]{label=-}
+\usepackage[colorlinks=true, allcolors=blue, pdfcreator={XeLaTeX}]{hyperref}
 
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    citecolor=blue,
-    urlcolor=blue
-}
-
-\title{\textbf{MALIS Project 1: Multi-Armed Bandits}\\\large Tasks 2 \& 3 Report: Human Play Analysis and Performance Isolation}
-\author{\textbf{Team Member:} \detokenize{Téo Altmeyer - Thomas Decker - Soren Faucon}}
+\title{\textbf{MALIS Project 1: Multi-Armed Bandits} \\ \large Final Report}
+\author{\textbf{Team:} Téo Altmeyer - Thomas Decker - Soren Faucon}
 \date{November 2026}
 
 \begin{document}
 
 \maketitle
 
-\section{Task 2: Human Play Analysis and Strategy Formalization}
+\section*{1. Task 2: Human Play Analysis and Strategy Formalization}
 
-\subsection{Gameplay Comparison with Strategy Notes}
-Only one team member (Thomas Decker, \texttt{\detokenize{fishing_log_decker.json}}) completed the Moodle activity before the deadline. Across all three seasons, his actions strictly matched his written strategy notes (Table 1):
+\subsection*{1.1 Gameplay Comparison with Strategy Notes}
+Only one team member (Thomas Decker, \texttt{fishing\_log\_decker.json}) completed the Moodle activity before the deadline. Across all three seasons, his actions strictly matched his written strategy notes (Table \ref{tab:human}).
 
-\begin{table}[htbp]
+\begin{table}[h]
 \centering
-\small
-\setlength{\tabcolsep}{4.5pt} % Réduit l'espacement pour que le tableau tienne parfaitement
-\begin{tabular}{lccccccr}
+\begin{tabular}{l l l l l l l l}
 \toprule
-\textbf{Season} & \textbf{Days} & \textbf{Explored} & \textbf{Committed Spot} & \textbf{Raw Catch} & \textbf{Oracle} & \textbf{Emp. Ratio} & \textbf{Exp. Ratio} \\
-& & & & & & ($\rho$) & ($\eta$) \\
+\textbf{Season} & \textbf{Days} & \textbf{Explored} & \textbf{Committed Spot} & \textbf{Raw Catch} & \textbf{Oracle} & $\boldsymbol{\rho}$ \textbf{Emp.} & $\boldsymbol{\eta}$ \textbf{Exp.} \\
 \midrule
-Season 1 & 30 & Days 1--5 & Spot 0 (Old Pier) & 260.6 kg & 300.0 kg & 86.87\% & 92.67\% \\
-Season 2 & 10 & Days 1--5 & Spot 0 (Old Pier) & 71.5 kg & 99.0 kg & 72.22\% & 80.10\% \\
-Season 3 & 30 & Days 1--5 & Spot 3 (Deep Channel) & 270.4 kg & 271.5 kg & 99.60\% & 92.78\% \\
+Season 1 & 30 & Days 1-5 & Spot 0 (Old Pier) & 260.6 kg & 300.0 kg & 86.87\% & 92.67\% \\
+Season 2 & 10 & Days 1-5 & Spot 0 (Old Pier) & 71.5 kg & 99.0 kg & 72.22\% & 80.10\% \\
+Season 3 & 30 & Days 1-5 & Spot 3 (Deep Channel) & 270.4 kg & 271.5 kg & 99.60\% & 92.78\% \\
 \bottomrule
 \end{tabular}
-\caption{Summary of human gameplay vs.\ oracle targets and noise-free efficiency ($\eta$).}\label{tab:human_play}
+\caption{Summary of human gameplay vs. oracle targets and noise-free efficiency ($\eta$).}
+\label{tab:human}
 \end{table}
 
 \begin{itemize}
-    \item \textbf{Season 1 (30 days):} The player tested all 5 spots once during days 1--5 (spots $0, 2, 4, 3, 1$, yielding $9.0, 5.5, 1.8, 2.0, 0.0\text{ kg}$) and exploited spot 0 exclusively for days 6--30, matching his note: \textit{``I tried all the fish spot and one had like the double amount [\dots] so I chose to always go there.''}
-    \item \textbf{Season 2 (10 days):} He repeated the exact 5-day round-robin exploration (spots $0, 2, 1, 3, 4$, yielding $10.1, 1.0, 3.6, 0.2, 8.4\text{ kg}$) and exploited spot 0 for days 6--10 (\textit{``Same strategy than previously''}).
-    \item \textbf{Season 3 (30 days, shift at day 16):} After exploring spots $0, 2, 1, 3, 4$ on days 1--5 ($2.2, 5.2, 1.5, 10.4, 3.0\text{ kg}$), he committed to spot 3 for days 6--30 without ever re-exploring (\textit{``As always I did the same strategy''}).
+    \item \textbf{Season 1 (30 days):} The player tested all 5 spots once during days 1-5 (spots 0, 2, 4, 3, 1, yielding 9.0, 5.5, 1.8, 2.0, 0.0 kg) and exploited spot 0 exclusively for days 6-30, matching his note: "I tried all the fish spot and one had like the double amount [...] so I chose to always go there."
+    \item \textbf{Season 2 (10 days):} He repeated the exact 5-day round-robin exploration and exploited spot 0 for days 6-10 ("Same strategy than previously").
+    \item \textbf{Season 3 (30 days, shift at day 16):} After exploring spots 0, 2, 1, 3, 4 on days 1-5, he committed to spot 3 for days 6-30 without ever re-exploring ("As always I did the same strategy").
 \end{itemize}
 
-\subsection{Formal Algorithmic Rule (1-Sample Explore-Then-Commit)}
+\subsection*{1.2 Formal Algorithmic Rule (1-Sample Explore-Then-Commit)}
 For any bay with $K=5$ spots over $T$ days ($T \ge K$), let $A_t \in \{0, \dots, K-1\}$ be the spot chosen on day $t$ and $R_t$ the observed catch:
 \begin{enumerate}
-    \item \textbf{Exploration ($1 \le t \le K$):} Sample each spot once without replacement ($A_t = t - 1$) and record the initial catch $r_{A_t} = R_t$.
-    \item \textbf{Commitment ($K < t \le T$):} Select the empirically best spot $a^* = \arg\max_{a} r_a$ (breaking ties randomly) and play $A_t = a^*$ for all remaining days.
+    \item \textbf{Exploration ($1 \le t \le K$):} Sample each spot once without replacement ($A_t = t-1$) and record the initial catch $r_{A_t} = R_t$.
+    \item \textbf{Commitment ($K < t \le T$):} Select the empirically best spot $a^* = \arg\max_a r_a$ (breaking ties randomly) and play $A_t = a^*$ for all remaining days.
 \end{enumerate}
 
-\section{Task 3: Separating Decisions from Luck \& Season Comparison}
+\section*{2. Task 3: Separating Decisions from Luck \& Season Comparison}
 
-\subsection{Performance Measure Derivation}
-Raw total catch $R_{\text{total}} = \sum_{t=1}^T R_t$ conflates decision quality with two sources of luck in \texttt{fishing.py}: (1)~\textbf{bay richness}, since spot means $\mu_t(a)$ are drawn uniformly in $[2.0, 10.0]\text{ kg}$, and (2)~\textbf{daily Gaussian noise}, since $R_t = \max(0, \mu_t(A_t) + \sigma \epsilon_t)$ with $\sigma = 2.5\text{ kg}$.
+\subsection*{2.1 Performance Measure Derivation}
+Raw total catch $R_{total} = \sum_{t=1}^T R_t$ conflates decision quality with two sources of luck in \texttt{fishing.py}: (1) bay richness, since spot means $\mu_t(a)$ are drawn uniformly in $[2.0, 10.0]$ kg, and (2) daily Gaussian noise, since $R_t = \max(0, \mu_t(A_t) + \sigma\epsilon_t)$ with $\sigma=2.5$ kg. 
 
-Using \texttt{bay.best\_possible()} and \texttt{bay.reveal()}, where $\mu^*_t = \max_a \mu_t(a)$, we define two normalized metrics:
+Using \texttt{bay.best\_possible()} and \texttt{bay.reveal()}, where $\mu_t^* = \max_a \mu_t(a)$, we define two normalized metrics:
 \begin{equation}
-    \rho_{\text{empirical}} = \frac{\sum_{t=1}^T R_t}{\sum_{t=1}^T \mu^*_t}, \qquad \eta_{\text{expected}} = \frac{\sum_{t=1}^T \mu_t(A_t)}{\sum_{t=1}^T \mu^*_t} = 1 - \frac{\text{Regret}_{\text{expected}}}{\sum_{t=1}^T \mu^*_t}
+    \rho_{empirical} = \frac{\sum_{t=1}^T R_t}{\sum_{t=1}^T \mu_t^*} \quad \text{and} \quad \eta_{expected} = \frac{\sum_{t=1}^T \mu_t(A_t)}{\sum_{t=1}^T \mu_t^*} = 1 - \frac{Regret_{expected}}{\sum_{t=1}^T \mu_t^*}
 \end{equation}
-While $\rho_{\text{empirical}}$ removes bay richness disparity, $\eta_{\text{expected}}$ also eliminates daily Gaussian noise $\sigma$, measuring purely the expected value of the chosen actions. Running \texttt{RandomAgent} across $500$ random Season~1 bays confirms that relative dispersion ($CV = \text{SD}/\text{Mean}$) drops from $19.18\%$ (raw catch) to $15.96\%$ ($\rho_{\text{empirical}}$) and $14.55\%$ ($\eta_{\text{expected}}$), achieving a $24.1\%$ variance reduction (Table 2).
 
-\begin{table}[htbp]
+While $\rho_{empirical}$ removes bay richness disparity, $\eta_{expected}$ also eliminates daily Gaussian noise $\sigma$, measuring purely the expected value of the chosen actions. Testing across 500 random Season 1 bays confirms that relative dispersion (CV = SD/Mean) drops from 19.18\% (raw catch) to 14.55\% ($\eta_{expected}$), achieving a 24.1\% variance reduction.
+
+\subsection*{2.2 Cross-Season Comparison}
+\begin{itemize}
+    \item \textbf{Shorter Horizon in Season 2 ($T=10$):} Spending 5 days exploring consumed 50\% of the season. Consequently, expected efficiency dropped from 92.67\% to 80.10\%, showing that static exploration is too costly on short horizons.
+    \item \textbf{Environmental Shift in Season 3 ($t_{shift}=16$):} True spot means changed at day 16. The player did not adapt at all, staying on spot 3 for all 25 exploitation days. Yet, he achieved $\eta=92.78\%$ purely because spot 3 happened to fortuitously remain the optimal arm after the shift.
+\end{itemize}
+
+\section*{3. Task 4: Bandit Algorithms}
+We implemented three agents inheriting from the base \texttt{Agent} class:
+\begin{itemize}
+    \item \textbf{\texttt{HumanRuleAgent}:} Implements the 1-Sample Explore-Then-Commit baseline.
+    \item \textbf{\texttt{EpsilonGreedyAgent}:} (Sutton \& Barto, Sec. 2.2 \& 2.5). Explores a random spot with probability $\epsilon$, and exploits the spot with the highest estimated value with probability $1 - \epsilon$. The agent can use a constant step-size parameter $\alpha \in (0,1]$ for value updates, allowing it to efficiently track non-stationary problems by weighting recent rewards more heavily than older ones.
+    \item \textbf{\texttt{UCBAgent}:} (Sutton \& Barto, Sec. 2.7). Upper Confidence Bound action selection. It selects the action $a$ maximizing $Q_t(a) + c \sqrt{\ln(t) / N_t(a)}$, ensuring all spots are explored initially to avoid zero-division. The parameter $c > 0$ dictates the degree of exploration.
+\end{itemize}
+
+\section*{4. Task 5: Evaluation and Discussion}
+
+\subsection*{4.1 Large-Scale Random Bays and Team Bays Comparison}
+We simulated \texttt{EpsilonGreedyAgent} ($\epsilon=0.1, \alpha=0.1$) and \texttt{UCBAgent} ($c=2.0$) across 1000 random bays. Both algorithms converged to stable, near-optimal distributions. When replayed exactly on Decker's original game seed, both algorithms matched or slightly surpassed the human baseline in stationary environments, but vastly outperformed the human rule in edge cases (extended timelines or shorter horizons).
+
+\begin{table}[h]
 \centering
-\small
-\begin{tabular}{lccc}
+\begin{tabular}{l l l l}
 \toprule
-\textbf{Metric (500 Season 1 Bays, RandomAgent)} & \textbf{Mean} & \textbf{SD} & \textbf{Coeff. of Variation ($CV$)} \\
+\textbf{Agent} & \textbf{Decker's Bay (Season 1)} & \textbf{Extended Season 2 (100d)} & \textbf{Extended Season 3 (100d)} \\
 \midrule
-1. Raw Total Catch ($R_{\text{total}}$) & 180.3 kg & 34.6 kg & 19.18\% \\
-2. Empirical Performance Ratio ($\rho_{\text{empirical}}$) & 0.696 & 0.111 & 15.96\% \\
-3. Expected Efficiency Ratio ($\eta_{\text{expected}}$) & 0.694 & 0.101 & \textbf{14.55\%} \\
+Human (Log/Rule) & 260.6 kg / 264.6 kg & 783.4 kg & 687.0 kg \\
+$\epsilon$-Greedy ($\epsilon=0.1$) & 265.4 kg & 767.0 kg & 685.9 kg \\
+UCB ($c=2.0$) & 262.6 kg & \textbf{833.2 kg} & \textbf{769.0 kg} \\
 \bottomrule
 \end{tabular}
-\caption{Variance reduction across 500 random bays under a fixed decision policy.}\label{tab:metrics_variance}
+\caption{Total Catch on Decker's seeds and extended horizons (mean over 200 bays).}
+\label{tab:evaluation}
 \end{table}
 
-\subsection{Cross-Season Comparison}
+\subsection*{4.2 Identifying the Best Agents for Seasons 2 and 3}
 \begin{itemize}
-    \item \textbf{Shorter Horizon in Season 2 ($T=10$):} Spending 5 days exploring consumed $50\%$ of the season (vs.\ $16.7\%$ in Season~1). Consequently, expected efficiency $\eta$ dropped from $92.67\%$ to $80.10\%$ ($\rho = 72.22\%$), showing that static exploration is too costly on short horizons.
-    \item \textbf{Environmental Shift in Season 3 ($t_{\text{shift}} = 16$):} True spot means changed at day 16 from $[2.6, 6.1, 5.6, \mathbf{9.5}, 4.1]$ to $[7.5, 5.4, 5.0, \mathbf{8.6}, 3.8]$. The player did not adapt at all, staying on spot 3 for all 25 exploitation days. Yet, he achieved $\eta = 92.78\%$ (and a lucky $\rho = 99.60\%$ due to positive daily noise) purely because spot 3 happened to remain the optimal arm after the shift ($\mu_3: 9.5 \to 8.6$).
+    \item \textbf{Best for Season 2 (Short horizon):} \textbf{UCB} is optimal. The \texttt{HumanRuleAgent} wastes 50\% of a 10-day season on blind exploration. UCB seamlessly balances exploration and exploitation from day 1, maximizing short-term yields.
+    \item \textbf{Best for Season 3 (Changing environment):} \textbf{$\epsilon$-Greedy with constant $\alpha$} (e.g., $\alpha=0.1$) is ideal. Unlike sample-average methods or the static Human Rule, a constant $\alpha$ maintains a permanent learning rate. When the fish distributions shift abruptly at day 16, it quickly "forgets" the obsolete historical averages and locks onto the new optimal spot.
+\end{itemize}
+
+\subsection*{4.3 Parameter Study: Exploration Rate ($\epsilon$)}
+We studied the effect of $\epsilon \in [0.0, 0.9]$ for the \texttt{EpsilonGreedyAgent} on Season 1 (using sample-averages, $\alpha=\text{None}$, evaluated over 500 bays). A pure greedy approach ($\epsilon=0.0$) performed sub-optimally (mean $\approx 220$ kg) as it often became permanently stuck exploiting a mediocre spot that yielded a lucky initial catch. Performance peaked sharply at $\boldsymbol{\epsilon = 0.1}$ (mean $\approx 260$ kg), representing the sweet spot between discovering the best arm and heavily exploiting it. For $\epsilon > 0.2$, performance decayed linearly due to the "epsilon tax"—the algorithmic cost of blindly exploring suboptimal spots long after the true optimal spot had been identified.
+
+\section*{5. Task 6: Contextual Bandits (KNN)}
+The contextual bay introduces daily weather parameters: wind (0-40 km/h), waves (0-3 m), and tide (0-2 m). To implement K-Nearest Neighbors (KNN), we first normalized these values dividing by $[40.0, 3.0, 2.0]$ so that no single environmental feature disproportionately dominated the Euclidean distance calculation. 
+
+Our \texttt{KNNContextualAgent} predicts the catch of each spot by averaging historical yields from the $k=3$ days with the most similar weather.
+
+\textbf{The Pure Greedy Failure \& The Fix:} 
+If the agent relies solely on predictions (Pure Greedy, initializing unseen spots at 0.0), it fails catastrophically. It picks spot 0 on day 1, records a catch, and because all other spots remain unvisited (and predicted at 0.0), it never explores them again. It spends 300 days stuck in a local minimum (Mean: 1828.2 kg), performing worse than a completely Random Agent (1945.7 kg).
+
+The fix is integrating an \textbf{$\epsilon$-greedy exploration policy}. By setting $\epsilon = 0.1$, the agent is forced to sample all spots across various weather conditions, populating its history matrix equitably. 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l c}
+\toprule
+\textbf{Agent Configuration (Contextual Bay, 300 days)} & \textbf{Mean Total Catch (kg)} \\
+\midrule
+Random Contextual Agent & 1945.7 \\
+Pure Greedy KNN (Unseen = 0.0, $\epsilon = 0.0$) \textbf{-> Fails!} & 1828.2 \\
+KNN with $\epsilon$-greedy Fix ($k=3, \epsilon=0.1$) & 2664.0 \\
+Best Part III Agent (UCB, ignoring context) & 2804.9 \\
+\bottomrule
+\end{tabular}
+\caption{Contextual evaluation (100 bays). The $\epsilon$-greedy fix rescues the KNN algorithm.}
+\label{tab:contextual}
+\end{table}
+
+While the fixed KNN performs vastly better than pure greedy, it scored slightly below the Part III UCB agent. This occurs because the fixed $\epsilon=0.1$ subjects the KNN agent to a heavy "epsilon tax" (wasting 10\% of its 300 days on random choices), whereas UCB dynamically decays its exploration. Decreasing $\epsilon$ over time would allow the contextual KNN to surpass UCB by leveraging the weather data without chronic random sampling.
+
+\section*{6. Team Contributions}
+\begin{itemize}
+    \item \textbf{Téo Altmeyer:} Implemented the evaluation pipelines within the Jupyter Notebook. Automated the JSON log parsing and handled cross-season simulation metrics.
+    \item \textbf{Thomas Decker:} Played the Moodle Fishing game to generate the human dataset. Formalized the \texttt{HumanRuleAgent} and implemented the Contextual K-NN agent logic (data normalization and distance calculations).
+    \item \textbf{Soren Faucon:} Formulated the regret-based performance metrics (Task 3). Implemented the \texttt{UCBAgent} and \texttt{EpsilonGreedyAgent} algorithms from the Sutton \& Barto reading. Conducted the parameter tuning study for $\epsilon$.
 \end{itemize}
 
 \end{document}

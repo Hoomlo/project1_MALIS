@@ -235,7 +235,7 @@ class EpsilonGreedyAgent(Agent):
         Step-size parameter for the update. If None, uses the sample average 
         (1/N). If set to a float, allows the agent to track non-stationary problems.
     """
-    def __init__(self, n_spots=5, seed=None, epsilon=0.1, alpha=None):
+    def __init__(self, n_spots=5, seed=None, epsilon=0.1, alpha=0.1):
         super().__init__(n_spots, seed)
         self.epsilon = epsilon
         self.alpha = alpha
